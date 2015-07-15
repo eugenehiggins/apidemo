@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  ul
+    if documents 
+        each document, i in documents
+            li zip: #{document._id}, city: #{document.city}
+
