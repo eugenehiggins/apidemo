@@ -1,0 +1,22 @@
+extends layout
+
+
+block content
+    h1= title
+    p Welcome to all the #{title}
+    if documents 
+        include ./states.jade
+
+        h2 Zip Codes
+        ul
+            each document, i in documents
+                li zip: #{document._id}, #{document.city}, #{document.state}
+
+    if state
+        h2 Zipcodes by state
+        ul
+            each zip, i in state
+                li 
+                    a.zip(href="/data/#{zip._id}")
+                        | #{zip._id}, #{zip.city}, #{zip.state}
+

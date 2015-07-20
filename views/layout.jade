@@ -8,11 +8,12 @@ html(lang='en')
     meta(name='description', content='')
     meta(name='author', content='')
     //link(rel='icon', href='../../favicon.ico')
-    title Starter Template for Bootstrap
+    title API Demo
     // Bootstrap core CSS
     link(rel='stylesheet', href='/css/bootstrap.css')
     // Custom styles for this template
     link(href='/css/starter-template.css', rel='stylesheet')
+    link(href='/css/style.css', rel='stylesheet')
     
   body
     nav.navbar.navbar-inverse.navbar-fixed-top
@@ -23,7 +24,7 @@ html(lang='en')
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand(href='#') Project name
+          a.navbar-brand(href='#') API Demo
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
             li.active
@@ -31,15 +32,14 @@ html(lang='en')
             li
               a(href='#about') About
             li
-              a(href='#contact') Contact
+              a(href='/data') Data
         // /.nav-collapse
     .container
       //.starter-template
-      h1 Bootstrap starter template
+      h1 API Demo
       p.lead
-        | Use this document as a way to quickly start any new project.
-        br
-        |  All you get is this text and a mostly barebones HTML document.
+        | A proof of concept for being able to take user data and authenticate against a remote API
+
       block content
     // /.container
     //
@@ -48,4 +48,5 @@ html(lang='en')
     // Placed at the end of the document so the pages load faster
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
     script(src='/js/bootstrap.js')
+    script(src='/js/scripts.js')
    
