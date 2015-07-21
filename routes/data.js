@@ -33,9 +33,7 @@ router.get('/', function(req, res, next) {
     var collection = db.collection('zips');
 
     collection.count(function(err, count) {
-      console.log("There are " + count + " records in the zips collection. Here they are:");
-
-      
+      console.log("There are " + count + " records in the zips collection. Here they are:");      
 
       var myCursor = collection.find().toArray(function(err, docs){
         if (docs.length) {
@@ -85,6 +83,22 @@ router.get('/:state', function(req, res, next) {
     
   });
 
+});
+
+router.post('/edit/:id', function(req, res) {
+  
+  MongoClient.connect("mongodb://localhost:27017/zips", function(err, db) {
+    var collection = db.collection('zips');
+    var id = req.params.id;
+
+    collection.update({ '_id' : req.params.id }, {$set: {'city':req.body.city}}, function (err,count,status){
+      if (err) throw err;
+
+      res.send(
+            (err === null) ? { msg: '' } : { msg: err }
+      );
+    })
+  });
 });
 
 module.exports = router;

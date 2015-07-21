@@ -4,19 +4,25 @@ extends layout
 block content
     h1= title
     p Welcome to all the #{title}
+
     if documents 
+        p Click on a state name to filter zip codes by that state
         include ./states.jade
 
         h2 Zip Codes
+        p This is just all zip codes unfiltered by state. A fairly unnecesarry drain of DB resources.
         ul
             each document, i in documents
                 li zip: #{document._id}, #{document.city}, #{document.state}
 
     if state
+        p Click on a city name and it will allow you to edit the city. Click Enter while the field has focus to save the edit.
         h2 Zipcodes by state
-        ul
+        ul#zipslist
             each zip, i in state
                 li 
-                    a.zip(href="/data/#{zip._id}")
-                        | #{zip._id}, #{zip.city}, #{zip.state}
+                    |   #{zip._id},
+                    a.zip(href="#", data-id="#{zip._id}")
+                        |  #{zip.city}
+                    |, #{zip.state}
 
